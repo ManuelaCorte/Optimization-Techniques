@@ -1,0 +1,16 @@
+\subsection{DIRECT}
+
+\subsection{Basin Hopping}
+The "temperature" parameter for the acceptance or rejection criterion.
+Higher "temperatures" mean that larger jumps in function value will be
+accepted.  For best results `T` should be comparable to the
+separation (in function value) between local minima.
+
+This is a crucial parameter in `basinhopping` and
+depends on the problem being solved. The step is chosen uniformly in the
+region from x0-stepsize to x0+stepsize, in each dimension. Ideally, it
+should be comparable to the typical separation (in argument values) between
+local minima of the function being optimized. `basinhopping` will, by
+default, adjust `stepsize` to find an optimal value, but this may take
+many iterations. You will get quicker results if you set a sensible
+initial value for ``stepsize``.
