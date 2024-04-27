@@ -1,13 +1,13 @@
 \subsection{Grid Search}
 \label{sec:grid-search}
 
-Grid search performs an uninformed search on the entire search space of the optimization function. If we decrease the step size (or equivalently increase the number of steps), we are able to find the global minimum. However, this comes at the cost of increased computational time. This is especially true for high dimensional search spaces and for computationlayy complex functions.
+Grid search performs an uninformed search on the entire search space of the optimization function. If we decrease the step size (or equivalently increase the number of steps), we are able to find the global minimum. However, this comes at the cost of increased computational time which is especially problematic for complex functions. Moreover, in high-dimensional spaces, the number of steps required to find the global minimum increases exponentially.
 
 For example below \ref{fig:gs-100} we report the results of grid search for the Rastrigin function in 2D which is a non-convex highly multimodal function and compare then with the much more simple Hypersphere function. We can see that with 100 steps we are able to get an approximation that is rougly comparable despite the difference in complexity of the two functions.
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab1/imgs/gs_sphere_100.png}
-        \caption{Hypersphere function with 10 steps}
+        \caption{Hypersphere function with 100 steps}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab1/imgs/gs_rastrigin_100.png}
@@ -17,7 +17,7 @@ For example below \ref{fig:gs-100} we report the results of grid search for the 
     \label{fig:gs-100}
 \end{figure}
 
-Given that an uniformed search is performed, this means that there is no risk of getting stuck in a local minima but at the same time no information abount the actual shape of the function is used to guide the search. This means that the search is not efficient and the number of steps required to find the global minimum can be very high. At the same it time it can also happen that a higher number of steps gives worse results simply because the discretization of the search space ends up exactly on the global minimum. For example we can see this in the example below \ref{fig:gs-ackley} with the Ackley function where 10 steps are able to perfectly find the minimum while 100 steps can't (this is mainly due to the fact the minimum is symmetric and exactly in zero so it end perfectly as a point in the grid).
+Given that an uniformed search is performed, this means that there is no risk of getting stuck in a local minima but at the same time no information abount the actual shape of the function is used to guide the search. This means that the search is not efficient and the number of steps required to find the global minimum can be very high. At the same it time it can also happen that a higher number of steps doesn't result in an improved solution simply because the discretization of the search space ends up samples points with a worse objective function. For example we can see this in the example below \ref{fig:gs-ackley} with the Ackley function where 10 steps are able to perfectly find the minimum while 100 steps can't (this is mainly due to the fact the search space is a square and the minimum is exactly in zero so the discretization with 10 steps contains exactly the minimum).
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -35,7 +35,8 @@ Given that an uniformed search is performed, this means that there is no risk of
 
 \subsection{Random Search}
 \label{sec:random-search}
-Given that the samples are taken randomly in the search space, all functions are equally hard to optimize (assuming that all fitness functions considered are equally hard in computing the fitness value). For example below \ref{fig:rs-100} we can see different functions, all with 100 samples and see that the results are comparable in terms of the quality of the solution found regarless of function.
+Random search is an uninformed search method that samples the search space randomly.
+Given that the samples are taken randomly in the search space, all functions are equally hard to optimize (assuming that all fitness functions are equally computationally hard). For example below \ref{fig:rs-100} we can see different functions, all with 100 samples and see that the results are comparable in terms of the quality of the solution found regarless of function.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -57,7 +58,7 @@ Given that the samples are taken randomly in the search space, all functions are
 
 \subsection{Powell}
 \label{sec:powell}
-Powell's method is a conjugate direction method that uses a set of directions to perform a line search. The directions are updated at each iteration to minimize the function. The method is only guaranteed to find a local minimum but in practice it is often able to find the global minimum as well. For example below \ref{fig:pw} we can see the results of Powell's method on the Rastrigin function where the method is able to find the global minimum and the DeJong5 function where it's not able to.
+Powell's method is a conjugate direction method that uses a set of directions to perform a line search. The directions are updated at each iteration to minimize the function. The method is only guaranteed to find a local minimum but in practice it is often able to find the global minimum as well. For example, in the graph below \ref{fig:pw} we can see the results of Powell's method on the Rastrigin function where the method is able to find the global minimum and the DeJong5 function where it's not able to even if the functions are both  multimodal.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -77,11 +78,11 @@ Another important aspect of Powell's method is the choice of the initial directi
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab1/imgs/pw_ackley.png}
-        \caption{Ackley with directions [[1, 0].[0,1]]}
+        \caption{Ackley with directions [[1, 0],[0,1]]}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab1/imgs/pw_ackley_opposite.png}
-        \caption{Ackley with directions [-1,0][0,-1]}
+        \caption{Ackley with directions [-1,0],[0,-1]}
     \end{subfigure}
     \caption{Powell's method on the Ackley function with different initial directions}
     \label{fig:ackley}
@@ -89,7 +90,7 @@ Another important aspect of Powell's method is the choice of the initial directi
 
 \subsection{Nelder-Mead}
 \label{sec:nelder-mead}
-Nelder-Mead is a direct search method that uses a simplex to perform the optimization. Compared to Powell's it's much more likely to get stuck in a local minimum and its performance is dependent on the choice of the initial point. For example below \ref{fig:nm-ackley} we can see the results of Nelder-Mead on the Ackley function where the method is able to converge to the global minimum with the right initial point but not with the wrong one.
+Nelder-Mead is a direct search method that uses a simplex to perform the optimization. Compared to Powell, it's much more likely to get stuck in a local minimum and its performance is dependent on the choice of the initial point. For example below \ref{fig:nm-ackley} we can see the results of Nelder-Mead on the Ackley function where the method is able to converge to the global minimum with the right initial point but not with the wrong one.
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab1/imgs/nm_ackley_20.png}

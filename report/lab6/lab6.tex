@@ -1,0 +1,9 @@
+Bayesian Optimization is a optimization algorithm that uses a probabilistic model to approximate the objective function \textit{(surrogate model)} and uses this model to guide the search for the optimal solution. The general procedure can be described as follows:
+\begin{enumerate}
+    \item choose surrogata function that approximate the real objective function (prior)
+    \item repeat until stopping condition
+          \begin{enumerate}
+              \item given a number of observations (computed from the real objective function), update the surrogate function (posterior distribution). Default choice is usually a Gaussian Process
+              \item optimize a cheap \textit{acquisition function / utility function} based on the posterior distribution to find the new point to sample. Also has the responsability of balancing exploration and exploitation
+          \end{enumerate}
+\end{enumerate}

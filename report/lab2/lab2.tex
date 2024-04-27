@@ -1,16 +1,28 @@
 \subsection{DIRECT}
+Partitioning algorithm that recursively subdivides the feasible region into smaller hyperrectangles. The algorithm is based on the principle of divide and conquer. The algorithm is as follows:
+\begin{enumerate}
+    \item Divide the feasible region into smaller hyperrectangles.
+    \item Evaluate the function at the center of each hyperrectangle. The division is performed so that the region with the best function value is given the largest space.
+    \item a set of potentially optimal hyperrectangles is identified and further divided.
+\end{enumerate}
 
 \subsection{Basin Hopping}
-The "temperature" parameter for the acceptance or rejection criterion.
-Higher "temperatures" mean that larger jumps in function value will be
-accepted.  For best results `T` should be comparable to the
-separation (in function value) between local minima.
+Basing Hopping is a form of Iterated Local Search with a different starting point each time. It loops through the following steps:
+\begin{enumerate}
+    \item Hopping: perturbation of the current solution ("jump" to new parts of the search space)
+    \item Local Search: perturbed solution is optimized using a local search method
+    \item Acceptance: the new solution is accepted or rejected based on an acceptance criterion. This criterion can be defined in different ways; here is defined based on the Metropolis criterion.
+\end{enumerate}
+% The "temperature" parameter for the acceptance or rejection criterion.
+% Higher "temperatures" mean that larger jumps in function value will be
+% accepted.  For best results T should be comparable to the
+% separation (in function value) between local minima.
 
-This is a crucial parameter in `basinhopping` and
-depends on the problem being solved. The step is chosen uniformly in the
-region from x0-stepsize to x0+stepsize, in each dimension. Ideally, it
-should be comparable to the typical separation (in argument values) between
-local minima of the function being optimized. `basinhopping` will, by
-default, adjust `stepsize` to find an optimal value, but this may take
-many iterations. You will get quicker results if you set a sensible
-initial value for ``stepsize``.
+% This is a crucial parameter in `basinhopping` and
+% depends on the problem being solved. The step is chosen uniformly in the
+% region from x0-stepsize to x0+stepsize, in each dimension. Ideally, it
+% should be comparable to the typical separation (in argument values) between
+% local minima of the function being optimized. `basinhopping` will, by
+% default, adjust `stepsize` to find an optimal value, but this may take
+% many iterations. You will get quicker results if you set a sensible
+% initial value for ``stepsize``.
