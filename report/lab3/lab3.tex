@@ -53,7 +53,7 @@ Even if convergence is on average faster, the same convergence guarantees as the
 BFGS is a quasi-Newton method, which means that it's a second order optimization method that doesn't need to compute the Hessian matrix. It's a good compromise between the gradient descent and Newton's method, since it's faster than the gradient descent but doesn't have the same overhead of computing the Hessian matrix as Newton's methods.
 
 Below \ref{fig:ros-comparison} we report an comparison between the three methods on the Rosenbrock function starting from point [2.0,2.0] and compare the number of iterations needed. It's interesting to notice that the BFGS terminates before reaching the global minimum and even changing the tolerance doesn't help in this case. Nevertheless, we obtain the expected result where the Newton's method converges in the fewest iterations, followed by the BFGS and then gradient descent.
-\begin{figure}
+\begin{figure}[H]
     \begin{subfigure}{0.5\linewidth}
         \includegraphics[width=\linewidth]{lab3/imgs/gd_rosenbrock.png}
         \caption{Gradient descent (10000 iterations)}
