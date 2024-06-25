@@ -1,5 +1,5 @@
 \subsection{Genetic Algorithms}
-Genetic algortithms are a class of metaheiristics ispired by the process of natural selection where the best individuals are the ones with the best fitness/pbjective function value. The general schema of GA is as follows:
+Genetic algortithms are a class of metaheiristics ispired by the process of natural selection where the best individuals are the ones with the best fitness/objective function value. The general schema of GA is as follows:
 \begin{enumerate}
     \item Generate an initial population of individuals.
     \item Evaluate the fitness of each individual.
@@ -12,17 +12,18 @@ Genetic algortithms are a class of metaheiristics ispired by the process of natu
           \end{enumerate}
 \end{enumerate}
 
-Except if differently specified, the following parameters are used:
+Except if differently specified, the following parameters are used for all following experiments:
 \begin{itemize}
     \item Population size: 50
     \item Number of generations: 50
     \item Objective function: Ackley
     \item Gaussia mutation with stadard deviation 1.0
+    \item Number of simulations: 10
 \end{itemize}
 
 \paragraph*{Mutation only GA}
-We can see that the performance of the GA with mutation only is comparable to the The GA with only mutation has slightly worse performance for high mutation rates probably because the perturbation is too big to precisely converge to the optimum. The results are shown in Table \ref{tab:mutation_rate}.
-\begin{table}
+The GA with only mutation has slightly worse performance for high mutation rates probably because the perturbation is too big to precisely converge to the optimum but in general it achieves satisfactory performances. The results are shown in Table \ref{tab:mutation_rate}.
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         Mutation rate & Average fitness & Standard deviation \\ \hline
@@ -43,7 +44,7 @@ We can see that the performance of the GA with mutation only is comparable to th
 
 \paragraph*{Crossover only GA}
 We now test the case where only crossover is used and we notice how the algorithm is not able to find a good solution. This is beacuse without mutation there is no introduction of new genetic material so the algorithm is not able to explore the search space. The results are shown in Table \ref{tab:crossover_rate}.
-\begin{table}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         Crossover rate & Average fitness & Standard deviation \\ \hline
@@ -64,7 +65,7 @@ We now test the case where only crossover is used and we notice how the algorith
 
 \paragraph*{Tournament size}
 We now test the tournament size selection method. We can see that the best performances are obtained for large tournament sizes. This is because the selection pressure is higher and the Ackely function has many local minima but none of them are "deceptive" so the algorithm can forego exploration and focus on exploitation. The results are shown in Table \ref{tab:tournament_size}.
-\begin{table}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         Tournament size & Average fitness & Standard deviation \\ \hline
@@ -114,11 +115,12 @@ Unless specified, the following parameters are used:
     \item Number of generations: 50
     \item Objective function: Ackley
     \item Strategy: None
+    \item Number of simulations: 10
 \end{itemize}
 
 \paragraph*{Offspring size}
 We can see that the performance of the algorithm is better for larger offspring sizes. This is because the algorithm is able to explore the search space better but with the tradeoff of computational complexity. The results are shown in Table \ref{tab:es-offspring_size}.
-\begin{table}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         Offspring size & Average fitness & Standard deviation \\ \hline
@@ -141,8 +143,8 @@ We now test different strategy to evolve the mutation rate:
     \item Individual: each individual has a mutation rate for each gene / dimension (axis-parallel ellipsoid)
     \item Correlated: each individual has a mutation rate for each gene and the interaction between every pair of genes (general ellipsoid)
 \end{itemize}
-We can see that the best performance is obtained with the global strategy probably because there is no skewd narrow vallet to be found in the Ackely function that would require a more complex strategy. The results are shown in Table \ref{tab:es-strategy}.
-\begin{table}
+We can see that the best performance is obtained with the global strategy probably because there is no skewed narrow vallet to be found in the Ackely function that would require a more complex strategy. The results are shown in Table \ref{tab:es-strategy}.
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         Strategy   & Average fitness & Standard deviation \\ \hline
@@ -156,16 +158,16 @@ We can see that the best performance is obtained with the global strategy probab
 \end{table}
 
 \subsection{Particle Swarm Optimization}
-Particle Swarm Optimization is a population-based optimization technique that is inspired by the social behavior of a flock of birds searching for food. The algorithms aims at simulation emerginf social behaviours starting from few simple local rules. These rules are:
+Particle Swarm Optimization is a population-based optimization technique that is inspired by the social behavior of flocks of birds searching for food. The algorithms aims at finding emerging social behaviours starting from few simple local rules. These rules are:
 \begin{itemize}
     \item each position in the environment is associated with a reward
     \item each particle has memory of the best position it visited
     \item each particle gets information from its neighbours
 \end{itemize}
 
-\paragraph*{Population size / Generation ration}
+\paragraph*{Population size / Generation ratio}
 We compare the performances of the algorithm by changing the number of individuals in the population and the number of generations but keeping the ratio constant (so to have the same number of evaluations). We can see that the performance is better for larger populations and smaller number of generations. The results are shown in Table \ref{tab:pso-pop-gen}.
-\begin{table}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|c|}
         Population size & Generations & Average fitness & Standard deviation \\ \hline
@@ -185,8 +187,8 @@ We now test different topologies for the algorithm:
     \item Ring: each particle gets information from the N closest particles
     \item Star: each particle gets information from all other particles
 \end{itemize}
-The best performances are obtained by the star topology because the particles get information by a larger number of particles. To confirm this, we can see that the performance of the ring topology increases with the number of neighbours. The results are shown in Table \ref{tab:pso-topology}.
-\begin{table}
+The best performances are obtained by the star topology because the each particle gets information by a larger number of particles. To confirm this trend, we can see that the performance of the ring topology increases with the number of neighbours. The results are shown in Table \ref{tab:pso-topology}.
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         Topology & Average fitness & Standard deviation \\ \hline

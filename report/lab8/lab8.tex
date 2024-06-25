@@ -13,7 +13,7 @@ The Kursawe function is a simple test function for multi-objective optimization.
 
 As a baseline, we use a simple Genetic Algorithm that combines the two objectives into a single one by taking a weighted sun of the two objectives that obtains as minimum the point $(-1.4538, -1.3927, -1.4533)$ with fitness $[-13.3689 -10.5619] \pm [0.0193 0.0198]$
 
-Below we can compare the fitness of the final population of the >Genetic Algorithm with the theoretical Pareto front of the Kursawe function.
+Below we can compare the fitness of the final population of the Genetic Algorithm with the theoretical Pareto front of the Kursawe function.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -49,7 +49,7 @@ The two conflicting objectives are:
     \item minimization of the break system mass
     \item minimization of the stopping time
 \end{enumerate}
-We also consider an additional situation (constrained) where the fitness value of an individual is penalized every time the constraints on the range of the parameters are violated. We can see that the achieved Pareto front achive slightly better results in the constrained case specifically in the coverage of the Pareto front.
+We also consider an additional situation (constrained) where the fitness value of an individual is penalized every time the constraints on the range of the parameters are violated. We can see that the achieved Pareto front has slightly better results in the constrained case specifically in the coverage of the Pareto front.
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab8/imgs/disk_nsga.png}

@@ -6,7 +6,28 @@ In this laboratory we'll compare different DoE techniques in the context of a si
     \item Random
 \end{itemize}
 
-We can see that the methods don't differ much both in terms of total time and in term of mean and standard deviation of the results. The only exception is the full factorial which in some cases find significantly better results (e.g. DeJong5) while in others (e.g. Rosenbrock, Rastrigin) performs significantly worse. In the Rastrigin function, for example, full factorial works so well because the point it samples is perfectly the global minimum \ref{fig:doe-rastrigin}
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab9/imgs/halton.png}
+        \caption{Halton sequence}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab9/imgs/lhs.png}
+        \caption{Latin hypercube sampling}
+    \end{subfigure}\\
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab9/imgs/ff.png}
+        \caption{Full factorial design}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab9/imgs/rand.png}
+        \caption{Random sampling}
+    \end{subfigure}
+    \caption{Comparison of different DoE techniques.}
+    \label{fig:doe-comp}
+\end{figure}
+
+We can see that the methods don't differ much both in terms of total time and in term of mean and standard deviation of the results. The only exception is the full factorial which in some cases finds significantly better results (e.g. DeJong5) while in others (e.g. Rosenbrock, Rastrigin) performs significantly worse. In the Rastrigin function, for example, full factorial works so well because the point it samples is perfectly the global minimum \ref{fig:doe-rastrigin}
 
 
 \begin{table}[H]

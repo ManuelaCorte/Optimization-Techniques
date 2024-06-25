@@ -2,10 +2,9 @@ In this lab we solve combinational optimization problems using integer and dynam
 \subsection{N Queens}
 The N queens puzzle is the problem of placing N chess queens on an $N\times N (N\ge 4)$ chessboard so that no two queens threaten each other; thus, a solution requires that no two queens share the same row, column, or diagonal.
 
-The constraints for the rows and columns are trivial to implement. The constraint for the diagonals can be implemented by checking if the difference (main diagonal) between the row and column or the sum (secondary diagonal) of two queens is the same.
-
+The constraints for the rows and columns are trivial to implement. The constraint for the diagonals can be implemented by checking if the difference between the row and column of two queens is the same (main diagonal) or the sum is the same (secondary diagonal).
 Below an example of the N queens problem for $N=10$ is shown.
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{lab11/imgs/nqueens.png}
     \caption{N queens problem for $N=10$}
@@ -13,10 +12,10 @@ Below an example of the N queens problem for $N=10$ is shown.
 \end{figure}
 
 \subsection{TSP}
-The goal of the TSP is to find the shortest Hamiltonian cycle (a cycle that visits each node only once) on a graph of N nodes. The formulation for integer programming is as follows:
+The goal of the TSP is to find the shortest Hamiltonian cycle (a cycle that visits each node only once) on a graph of $N$ nodes. The formulation for integer programming is as follows:
 \begin{align*}
     \text{minimize}   & \sum_{i=1}^{N}\sum_{j=1}^{N}d_{ij}x_{ij}                &                            \\
-    \text{subject to} & \sum_{j=1}^{N}x_{ij} = 1, \quad i=1,\ldots,N            & \text{one predecessor }    \\
+    \text{subject to} & \sum_{j=1}^{N}x_{ij} = 1, \quad i=1,\ldots,N            & \text{one predecessor}     \\
                       & \sum_{i=1}^{N}x_{ij} = 1, \quad j=1,\ldots,N            & \text{one successor}       \\
                       & u_1 = 1                                                 & \text{starting node}       \\
                       & u_i - u_j +1 \leq (N-1)(1-x_{ij}), \quad i,j=2,\ldots,N & \text{subtour elimination}
@@ -24,7 +23,7 @@ The goal of the TSP is to find the shortest Hamiltonian cycle (a cycle that visi
 where $d_{ij}$ is the distance between node $i$ and $j$, $x_{ij}$ is a binary variable that is 1 if the path goes from node $i$ to node $j$, and $u_i$ is a auxiliary variable that represents the position of node $i$ in the cycle.
 
 Below an example of the TSP problem for $N=10$ is shown.
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{lab11/imgs/tsp.png}
     \caption{TSP problem for $N=10$}
@@ -32,7 +31,7 @@ Below an example of the TSP problem for $N=10$ is shown.
 \end{figure}
 
 \subsection{Knapsack}
-The goal of the knapsack problem is to maximize the value of the items in the knapsack without exceeding the volume capacity. We'll solve it using dynamic programming and memoization.
+The goal of the knapsack problem is to maximize the value of the items in the knapsack without exceeding the volume capacity. We'll solve it using dynamic programming and tabulation.
 
 \begin{lstlisting}
 def knapsack(W, wt, val, n):
@@ -74,11 +73,11 @@ We compare the results for different knapsack capacities and we can see that the
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|}
-        Capacity & Achieved Capacity & Value & Items in the knapsack       \\ \hline
-        5        & 5                 & 9     & 05, 06, 07                  \\
-        10       & 10                & 16    & 05, 06, 07, 08, 09, 10      \\
-        15       & 15                & 20    & 01 02 03 05 06 07 08 09     \\
-        20       & 16                & 21    & 01 02 03 05 06 07 08 09 10  \\
-        25       & 25                & 25    & 01 02 03 04  05 06 07 08 09 \\
+        Capacity & Achieved Capacity & Value & Items in the knapsack      \\ \hline
+        5        & 5                 & 9     & 05 06 07                   \\
+        10       & 10                & 16    & 05 06 07 08 09 10          \\
+        15       & 15                & 20    & 01 02 03 05 06 07 08 09    \\
+        20       & 16                & 21    & 01 02 03 05 06 07 08 09 10 \\
+        25       & 25                & 25    & 01 02 03 04 05 06 07 08 09 \\
     \end{tabular}
 \end{table}
