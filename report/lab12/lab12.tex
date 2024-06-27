@@ -1,0 +1,67 @@
+\subsection{Robust KnapSack Problem}
+In this problem we'll solve the classic Knapsack problem with an added uncertainty on the volumes of the items
+
+\subsection{Robust Portfolio Optimization}
+In this problem we have a set of fictionary stocks, each one with a different mean and deviation on the return.
+We want to robustly maximize the return with a box uncertainty set.
+
+The box uncertainty set is either directly a box with a lower and upper bound for each stock, or defined using the norm.
+
+\paragraph*{Finite uncertainty set}
+In general for finite sets, the only one that leads to a viable result is the one where the uncertainty budget is 0.
+
+\paragraph*{Ellipsoidal uncertainty set}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{lab12/imgs/ellips.png}
+    \caption{Probability of violation for different uncertainty budgets $r$}
+    \label{fig:ellips}
+\end{figure}
+
+\paragraph*{Box uncertainty set}
+The box uncertainty set is defined as a lower and upper bound. For almost all possible boxes, the algorithm always return stock F which is the one with the highest return. The only exception is for negative boxes, where the algorithm return stock H which is the one with the lowest deviation.
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab12/imgs/pos_bounds.png}
+        \caption{Positive box uncertainty set}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab12/imgs/neg_bounds.png}
+        \caption{Negative  uncertainty set}
+    \end{subfigure}
+    \label{fig:box}
+\end{figure}
+
+\paragraph*{Norm uncertainty set}
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+        Upper bound & Objective value \\ \hline
+        0.5         & 1.0196          \\
+        1.0         & 0.9963          \\
+        1.5         & 0.9763          \\
+        2.0         & 0.9602          \\
+        \hline
+    \end{tabular}
+    \caption{Results for different upper bounds}
+\end{table}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab12/imgs/norm_05.png}
+        \caption{Upper bound = 0.5}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab12/imgs/norm_10.png}
+        \caption{Upper bound = 1.0}
+    \end{subfigure}\\
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab12/imgs/norm_15.png}
+        \caption{Upper bound = 1.5}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab12/imgs/norm_20.png}
+        \caption{Upper bound = 2.0}
+    \end{subfigure}
+    \label{fig:norm}
+\end{figure}
