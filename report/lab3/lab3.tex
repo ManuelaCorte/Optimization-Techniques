@@ -47,7 +47,7 @@ Newton's method is a second order optimization method, which means that it uses 
 Moreover, it has the advantage of having one less parameter to tune (the learning rate) since the algorithm uses instead information about the second derivate of the function to compute the step size.
 Even if convergence is on average faster, the same convergence guarantees as the gradient descent apply.
 
-In a good part of the functions this method doesn't converge or even founds a worse solution that the original one. Given that this behaviour is not expected, we assume there is a problem in the implementation of the algorithm. We can see this behaviour in the Rastrigin function \ref{fig:nm-rastrigin}.
+ON the majority of the functions this method doesn't converge or may even founds a worse solution that the original one. Given that this behaviour is not expected, we assume there is a problem in the implementation of the algorithm. We can see this behaviour in the Rastrigin function \ref{fig:nm-rastrigin}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{lab3/imgs/nm_rastrigin.png}

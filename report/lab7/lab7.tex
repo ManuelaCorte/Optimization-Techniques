@@ -1,5 +1,5 @@
 \subsection{Genetic Algorithms}
-Genetic algortithms are a class of metaheiristics ispired by the process of natural selection where the best individuals are the ones with the best fitness/objective function value. The general schema of GA is as follows:
+Genetic algortithms are a class of metaheuristics ispired by the process of natural selection where the best individuals are the ones with the best fitness/objective function value. The general schema of GA is as follows:
 \begin{enumerate}
     \item Generate an initial population of individuals.
     \item Evaluate the fitness of each individual.
@@ -43,7 +43,7 @@ The GA with only mutation has slightly worse performance for high mutation rates
 \end{table}
 
 \paragraph*{Crossover only GA}
-We now test the case where only crossover is used and we notice how the algorithm is not able to find a good solution. This is beacuse without mutation there is no introduction of new genetic material so the algorithm is not able to explore the search space. The results are shown in Table \ref{tab:crossover_rate}.
+We now test the case where only crossover is used and we notice how the algorithm is not able to find a good solution. This is because without mutation there is no introduction of new genetic material so the algorithm is not able to explore the search space. The results are shown in Table \ref{tab:crossover_rate}.
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -82,7 +82,7 @@ We now test the tournament size selection method. We can see that the best perfo
 \end{table}
 
 \paragraph*{Compare different objective functions}
-All the results are shown in Figure \ref{fig:ga-comp} with mutation rate 0.2, crossover rate 0.7. The results are comparable for all functions taking into account that different functions have different characteristics and the used parameters are not optimized for each function.
+All the results are shown in Figure \ref{fig:ga-comp} with mutation rate 0.2, crossover rate 0.7. The results are comparable for all functions taking into account that different functions have different characteristics, the used parameters are not optimized for each function and the optimization process is given a small number of generations.
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{lab7/imgs/ga_ackley.png}
@@ -107,7 +107,7 @@ All the results are shown in Figure \ref{fig:ga-comp} with mutation rate 0.2, cr
 
 
 \subsection{Evolution Strategies}
-Evolution Strategies are a class of metaheuristics that are similar to genetic algorithms but only use mutation and evolve the mutation operator together with the individual.
+Evolution Strategies are a class of metaheuristics that are similar to genetic algorithms that evolve the mutation rate together with the solution.
 
 Unless specified, the following parameters are used:
 \begin{itemize}
@@ -143,7 +143,7 @@ We now test different strategy to evolve the mutation rate:
     \item Individual: each individual has a mutation rate for each gene / dimension (axis-parallel ellipsoid)
     \item Correlated: each individual has a mutation rate for each gene and the interaction between every pair of genes (general ellipsoid)
 \end{itemize}
-We can see that the best performance is obtained with the global strategy probably because there is no skewed narrow vallet to be found in the Ackely function that would require a more complex strategy. The results are shown in Table \ref{tab:es-strategy}.
+We can see that the best performance is obtained with the global strategy probably because there is no skewed narrow valley to be found in the Ackley function that would require a more complex strategy. The results are shown in Table \ref{tab:es-strategy}.
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -158,7 +158,7 @@ We can see that the best performance is obtained with the global strategy probab
 \end{table}
 
 \subsection{Particle Swarm Optimization}
-Particle Swarm Optimization is a population-based optimization technique that is inspired by the social behavior of flocks of birds searching for food. The algorithms aims at finding emerging social behaviours starting from few simple local rules. These rules are:
+Particle Swarm Optimization is a population-based optimization technique that is inspired by the social behavior of flocks of birds. The algorithms aims at finding emerging social behaviours starting from few simple local rules. These rules are:
 \begin{itemize}
     \item each position in the environment is associated with a reward
     \item each particle has memory of the best position it visited

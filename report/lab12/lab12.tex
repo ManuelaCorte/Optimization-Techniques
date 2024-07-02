@@ -1,22 +1,21 @@
 \subsection{Robust KnapSack Problem}
 In this problem we'll solve the classic Knapsack problem with an added uncertainty on the volumes of the items
 
-\subsection{Robust Portfolio Optimization}
-In this problem we have a set of fictionary stocks, each one with a different mean and deviation on the return.
-We want to robustly maximize the return with a box uncertainty set.
-
-The box uncertainty set is either directly a box with a lower and upper bound for each stock, or defined using the norm.
-
 \paragraph*{Finite uncertainty set}
 In general for finite sets, the only one that leads to a viable result is the one where the uncertainty budget is 0.
 
 \paragraph*{Ellipsoidal uncertainty set}
-\begin{figure}
+We can see that the probability of violation decreases as the uncertainty budget / ellipsiod radius increases. This is expected since the larger the uncertainty set, the more likely it is that the solution is feasible.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{lab12/imgs/ellips.png}
     \caption{Probability of violation for different uncertainty budgets $r$}
     \label{fig:ellips}
 \end{figure}
+
+\subsection{Robust Portfolio Optimization}
+In this problem we have a set of fictionary stocks, each one with a different mean and deviation on the return.
+We want to robustly maximize the return with a box uncertainty set.
 
 \paragraph*{Box uncertainty set}
 The box uncertainty set is defined as a lower and upper bound. For almost all possible boxes, the algorithm always return stock F which is the one with the highest return. The only exception is for negative boxes, where the algorithm return stock H which is the one with the lowest deviation.
@@ -33,18 +32,7 @@ The box uncertainty set is defined as a lower and upper bound. For almost all po
 \end{figure}
 
 \paragraph*{Norm uncertainty set}
-\begin{table}
-    \centering
-    \begin{tabular}{|c|c|}
-        Upper bound & Objective value \\ \hline
-        0.5         & 1.0196          \\
-        1.0         & 0.9963          \\
-        1.5         & 0.9763          \\
-        2.0         & 0.9602          \\
-        \hline
-    \end{tabular}
-    \caption{Results for different upper bounds}
-\end{table}
+We can see how the return decreases as the upper bound increases. This is expected since the algorithm is trying to maximize the return while keeping the uncertainty low.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -65,3 +53,16 @@ The box uncertainty set is defined as a lower and upper bound. For almost all po
     \end{subfigure}
     \label{fig:norm}
 \end{figure}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        Upper bound & Objective value \\ \hline
+        0.5         & 1.0196          \\
+        1.0         & 0.9963          \\
+        1.5         & 0.9763          \\
+        2.0         & 0.9602          \\
+        \hline
+    \end{tabular}
+    \caption{Results for different upper bounds}
+\end{table}

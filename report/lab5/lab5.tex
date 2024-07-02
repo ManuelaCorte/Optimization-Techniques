@@ -16,7 +16,7 @@ ILS can be seen as a general framework that can be instantiated in many ways by 
 \subsection{Simulated Annealing}
 Simulated Annealing is a optimization algorithm inspired by the annealing process in metallurgy. The algorithm starts with an initial solution and iteratively moves to a new solution. The new solution is accepted if it improves upon the current solution or, if it's worse,depending on a probability that decreases with time. The probability of accepting a solution that is worse than the current solution is given by the Metropolis criterion $p = e^{-(f(x')-f(x))/T}$. The temperature $T$ is a parameter that controls the probability of accepting a worse solution and is decreased over time according to a cooling schedule ($T = \alpha T$).
 
-The first parameter that we need to evaluate is the temperature $T$ \ref{tab:sa-temp}. As we can see, the best performance is achieved with $T=1$ or smaller which makes sense since the difference in the objective function is small.
+The first parameter that we need to evaluate is the temperature $T$ \ref{tab:sa-temp}. As we can see, the best performance is achieved with $T=1$ or smaller which makes sense since the difference in the objective function is small (remember the observation made abount temperature in Basing Hopping).
 \begin{table}[H]
     \centering
     \begin{tabular}{c||c |c}

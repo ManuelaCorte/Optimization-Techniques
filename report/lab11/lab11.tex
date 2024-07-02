@@ -2,7 +2,7 @@ In this lab we solve combinational optimization problems using integer and dynam
 \subsection{N Queens}
 The N queens puzzle is the problem of placing N chess queens on an $N\times N (N\ge 4)$ chessboard so that no two queens threaten each other; thus, a solution requires that no two queens share the same row, column, or diagonal.
 
-The constraints for the rows and columns are trivial to implement. The constraint for the diagonals can be implemented by checking if the difference between the row and column of two queens is the same (main diagonal) or the sum is the same (secondary diagonal).
+The constraints for the rows and columns are trivial to implement. The constraint for the diagonals can be implemented by checking if the sum fo the indexes between the row and column of two queens is the same (main diagonal) or the difference is the same (secondary diagonal).
 Below an example of the N queens problem for $N=10$ is shown.
 \begin{figure}[H]
     \centering
@@ -14,11 +14,11 @@ Below an example of the N queens problem for $N=10$ is shown.
 \subsection{TSP}
 The goal of the TSP is to find the shortest Hamiltonian cycle (a cycle that visits each node only once) on a graph of $N$ nodes. The formulation for integer programming is as follows:
 \begin{align*}
-    \text{minimize}   & \sum_{i=1}^{N}\sum_{j=1}^{N}d_{ij}x_{ij}                &                            \\
-    \text{subject to} & \sum_{j=1}^{N}x_{ij} = 1, \quad i=1,\ldots,N            & \text{one predecessor}     \\
-                      & \sum_{i=1}^{N}x_{ij} = 1, \quad j=1,\ldots,N            & \text{one successor}       \\
-                      & u_1 = 1                                                 & \text{starting node}       \\
-                      & u_i - u_j +1 \leq (N-1)(1-x_{ij}), \quad i,j=2,\ldots,N & \text{subtour elimination}
+    \text{min}  & \sum_{i=1}^{N}\sum_{j=1}^{N}d_{ij}x_{ij}                &                            \\
+    \text{s.t.} & \sum_{j=1}^{N}x_{ij} = 1, \quad i=1,\ldots,N            & \text{one predecessor}     \\
+                & \sum_{i=1}^{N}x_{ij} = 1, \quad j=1,\ldots,N            & \text{one successor}       \\
+                & u_1 = 1                                                 & \text{starting node}       \\
+                & u_i - u_j +1 \leq (N-1)(1-x_{ij}), \quad i,j=2,\ldots,N & \text{subtour elimination}
 \end{align*}
 where $d_{ij}$ is the distance between node $i$ and $j$, $x_{ij}$ is a binary variable that is 1 if the path goes from node $i$ to node $j$, and $u_i$ is a auxiliary variable that represents the position of node $i$ in the cycle.
 

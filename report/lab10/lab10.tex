@@ -50,10 +50,18 @@ Rewrited in slack form and simplified this is equivalent to:
 \end{equation}
 
 The simplex method was used to solve this problem and the result was $X_1 = 10$, $X_2 = 15$.
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{lab10/imgs/ex2.png}
-    \label{fig:lab10-ex2}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab10/imgs/ex1.png}
+        \caption{Feasible region for exercise 1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{lab10/imgs/ex2.png}
+        \caption{Feasible region for exercise 2}
+    \end{subfigure}
+    \caption{Feasible regions}
+    \label{fig:feasible}
 \end{figure}
 
 \subsection{Exercise 3}
@@ -68,18 +76,18 @@ The mutual fund’s objective is to maximize total payout that it owns at the en
 
 \begin{equation}
     \begin{aligned}
-        \text{max} \quad   & 3.9X_1 + 1.06X_4 + 1.3X_5  & \text{3*1.3 annuity + 1.06 deposit Y3 + 1.3 bond } \\
-        \text{s.t.} \quad & - X_1 - X_2 = - 100K      & \text{spend at most 100K in annuity and deposit}        \\
-                                & - X_1 + 1.06x_2 - X_3 - X_5 = 0 & \text{spend for annuity, bond and deposit, get capital Y1}        \\
-                                & - X_1 + 1.06x_3 - X_4 = 0       & \text{spend for annuity and deposit, get capital Y2}        \\
-                                & X_2, X_3, X_4 \ge -20K   & \text{at most 20K deposit in bank}        \\
-                                & X_5 \leq 50K             & \text{at most 50K for bond}         \\
-                                & X_1, X_5 \geq 0                 &
+        \text{max} \quad  & 3.9X_1 + 1.06X_4 + 1.3X_5       & \text{3*1.3 annuity + 1.06 deposit Y3 + 1.3 bond }         \\
+        \text{s.t.} \quad & - X_1 - X_2 = - 100K            & \text{spend at most 100K in annuity and deposit}           \\
+                          & - X_1 + 1.06X_2 - X_3 - X_5 = 0 & \text{spend for annuity, bond and deposit, get capital Y1} \\
+                          & - X_1 + 1.06X_3 - X_4 = 0       & \text{spend for annuity and deposit, get capital Y2}       \\
+                          & X_2, X_3, X_4 \ge -20K          & \text{at most 20K deposit in bank}                         \\
+                          & X_5 \leq 50K                    & \text{at most 50K for bond}                                \\
+                          & X_1, X_5 \geq 0                 &
     \end{aligned}
 \end{equation}
-where $X_1$ is the total amount to put in the annuity, $X_2, X_3, X_4$ are the bank deposit balances ant the beginning of the three year and $X_5$ is the amount inversted in the corporate bond.
+where $X_1$ is the total amount to put in the annuity, $X_2, X_3, X_4$ are the bank deposit balances at the beginning of the three year and $X_5$ is the amount invested in the corporate bond.
 
-The simplex method was used and the result was
+The simplex method was used and the result is
 \begin{equation}
     \begin{aligned}
         X_1 = 24930, X_2 = 75070, X_3 = 4649, X_4 = -20000, X_5 = 50000
